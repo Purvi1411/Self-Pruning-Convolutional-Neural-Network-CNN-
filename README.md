@@ -31,7 +31,7 @@ Initial testing revealed a spurious correlation (the model associated "Blue Sky"
 ## 🛠️ Tech Stack
 * **Deep Learning:** PyTorch, Torchvision
 * **Frontend / UI:** Streamlit, Pandas, Matplotlib, PIL
-* **Deployment:** Docker, Streamlit Community Cloud
+* **Deployment:** Docker, Streamlit Community Cloud.
 
 ## 💻 Local Installation & Usage
 
@@ -48,3 +48,12 @@ docker build -t ai-pruning-project .
 
 # 3. Run the container
 docker run -p 8501:8501 -it ai-pruning-project
+
+### Lambda (λ) Trade-off Analysis
+*Note: The network was trained using a custom CNN architecture with Data Augmentation (30 Epochs) to ensure robust spatial feature extraction.*
+
+| Lambda (λ) | Target Description | Test Accuracy | Global Sparsity (%) |
+|------------|--------------------|---------------|---------------------|
+| 0.0        | Baseline (Dense)   | ~ 75.0 %      | 0.00 %              |
+| 1e-3       | Medium Pruning     | ~ 72.5 %      | 45.00 %             |
+| 5e-3       | Aggressive Pruning | ~ 68.0 %      | 99.55 %             |
